@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="minDeltaDistance" type="double"><value>0.4</value></simple>
+  <simple name="minDeltaTheta" type="double"><value>0.3</value></simple>
+  <simple name="circumference" type="boolean"><value>0</value></simple>
+</properties>

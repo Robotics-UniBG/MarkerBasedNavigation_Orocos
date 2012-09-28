@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <struct name="twist_tmp" type="Twist">
+     <struct name="linear" type="Vector3">
+        <description>Part</description>
+        <simple name="x" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="z" type="double"><description>Part</description><value>0</value></simple>
+     </struct>
+     <struct name="angular" type="Vector3">
+        <description>Part</description>
+        <simple name="x" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="z" type="double"><description>Part</description><value>0</value></simple>
+     </struct>
+  </struct>
+</properties>

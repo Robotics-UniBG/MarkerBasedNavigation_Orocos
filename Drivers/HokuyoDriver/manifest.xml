@@ -1,0 +1,17 @@
+<package>
+    <description brief="Hokuyo Driver">
+        This package contains the component for the Hokuyo Driver
+    </description>
+    <license></license>
+		<author>Luca Gherardi</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="rtt_sensor_msgs"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="rtt_diagnostic_msgs"/>
+    <export>
+        <cpp cflags="-I${prefix}/msg/cpp -I${prefix}/srv/cpp -I${prefix}/include" lflags="-L${prefix}/lib -Wl,-rpath,${prefix}/lib -llibhokuyo" />
+    </export>
+  
+</package>
+

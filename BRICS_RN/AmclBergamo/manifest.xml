@@ -1,0 +1,15 @@
+<package>
+    <description brief="AMCL Bergamo">
+        This package contains the Adaptive Monte Carlo Localization component based on ROS amcl
+    </description>
+    <license></license>
+		<author>...</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="rtt_brics_rn_msgs"/>
+    <depend package="rtt_nav_msgs"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="rtt_sensor_msgs"/>
+</package>
+

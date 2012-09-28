@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="ifname" type="string"><description>interface to which the ethercat device is connected</description><value>eth0</value></simple>
+  <simple name="youBotOdometryFrameId" type="string"><description>interface to which the ethercat device is connected</description><value>/odom</value></simple>
+  <simple name="youBotOdometryChildFrameId" type="string"><description>interface to which the ethercat device is connected</description><value>/base_footprint</value></simple>
+</properties>

@@ -1,0 +1,14 @@
+<package>
+    <description brief="Coordinator">
+        ...
+    </description>
+    <license></license>
+		<author>Andrea Luzzana</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="rtt_std_msgs"/>
+    <depend package="mbn_common"/>
+</package>
+
+ 

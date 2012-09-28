@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+
+
+<simple name="Import" type="string"><value>YoubotSimulatorDriver</value></simple> 
+<simple name="Import" type="string"><value>SimulatorApplicationTest</value></simple>
+<simple name="Import" type="string"><value>rtt_rosnode</value></simple>
+<simple name="Import" type="string"><value>rtt_motion_control_msgs</value></simple>
+
+<!-- OROCOS TO ROS CONNECTIONs DEFINITIONS -->
+<!-- velocity commands to simulator -->
+<struct name="ROS_VelCommand" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/arm_1/arm_controller/velocity_command</value></simple>
+</struct>
+<!-- position commands to simulator -->
+<struct name="ROS_PosCommand" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/arm_1/arm_controller/position_command</value></simple>
+</struct>  
+<!-- torque commands to simulator -->
+<struct name="ROS_TorqCommand" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/arm_1/arm_controller/torque_command</value></simple>
+</struct>  
+<!-- gripper commands to simulator -->
+<struct name="ROS_GripperCommand" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/arm_1/gripper_controller/position_command</value></simple>
+</struct>  
+<!-- torque commands to simulator -->
+<struct name="ROS_TwistCommand" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/cmd_vel</value></simple>
+</struct>  
+
+<!-- joints state from simulator -->
+<struct name="ROS_JointsState" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/joint_states</value></simple>
+</struct>    
+
+<!-- odometry from simulator -->
+<struct name="ROS_Odometry" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/odom</value></simple> 
+</struct> 
+
+<!-- Lase Scans from simulator -->
+<struct name="ROS_LaserScan" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/base_scan</value></simple> 
+</struct> 
+
+
+
+<!-- APPLICATION TEST COMPONENT -->
+  <struct name="SimulatorApplicationTest" type="SimulatorApplicationTestNamespace::SimulatorApplicationTest">   
+  	<simple name="Server" type="boolean"><value>1</value></simple>
+  	<simple name="UseNamingService" type="boolean"><value>1</value></simple>
+    <struct name="Activity" type="Activity">
+    <simple name="Priority" type="long"><value>0</value></simple>
+    <simple name="Period" type="double"><value>0.1</value></simple>
+    <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+  </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+  <struct name="Peers" type="PropertyBag">
+    <simple type="string"><value>YoubotSimulatorDriver</value></simple>
+  </struct>
+  <struct name="Ports" type="PropertyBag">
+      <simple name="cartVelocitiesOutputPort" type="string"><value>twist</value></simple>
+  	   <simple name="odometryInputPort" type="string"><value>odo</value></simple>
+  	   <simple name="jointVelocitiesOutputPort" type="string"><value>jntVel</value></simple>
+  	   <simple name="jointPositionsOutputPort" type="string"><value>jntPos</value></simple>
+  	   <simple name="jointEffOutputPort" type="string"><value>jntEff</value></simple>
+  	   <simple name="jointStateInputPort" type="string"><value>jntState</value></simple>
+  	   <simple name="laserScanPort" type="string"><value>laser</value></simple>
+  </struct>
+    <simple name="UpdateProperties" type="string">
+      <value>properties/SimulatorApplicationTest.cpf</value> 
+    </simple>
+  </struct>
+  
+
+
+<!-- SIMULATOR COMPONENT -->
+  <struct name="YoubotSimulatorDriver" type="youbot_sim_driver::YoubotSimulatorDriver">
+  	<simple name="Server" type="boolean"><value>1</value></simple>
+  	<simple name="UseNamingService" type="boolean"><value>1</value></simple>
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.1</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+   <struct name="Peers" type="PropertyBag">
+    <simple type="string"><value>SimulatorApplicationTest</value></simple>
+  </struct>
+    <!-- ports to ROS/GAZEBO simulator -->
+    <struct name="Ports" type="PropertyBag">
+      <simple name="ArmJointsVelOutput_toROS" type="string"><value>ROS_VelCommand</value></simple>
+      <simple name="ArmJointsPosOutput_toROS" type="string"><value>ROS_PosCommand</value></simple>
+      <simple name="ArmJointsTorqOutput_toROS" type="string"><value>ROS_TorqCommand</value></simple>
+      <simple name="GripperJointsPosOutput_toROS" type="string"><value>ROS_GripperCommand</value></simple>
+      <simple name="BaseTwistOutput_toROS" type="string"><value>ROS_TwistCommand</value></simple>
+      <simple name="JointStateInput_fromROS" type="string"><value>ROS_JointsState</value></simple>
+      <simple name="OdometryInput_fromROS" type="string"><value>ROS_Odometry</value></simple>
+      <simple name="laserScans_fromROS" type="string"><value>ROS_LaserScan</value></simple>      
+	<!-- driver components ports -->
+	<!-- base ports -->          	 
+      <simple name="base_port_cmd_twist" type="string"><value>twist</value></simple>
+  	  <simple name="base_port_odom" type="string"><value>odo</value></simple>
+  	  <simple name="laserScanPort" type="string"><value>laser</value></simple>
+  	  <!-- arm ports -->          	 
+  	  <simple name="arm_port_cmd_vel" type="string"><value>jntVel</value></simple>
+   	  <simple name="arm_port_cmd_pos" type="string"><value>jntPos</value></simple>  
+  	  <simple name="arm_port_cmd_eff" type="string"><value>jntEff</value></simple>
+  	  <simple name="arm_port_joint_states" type="string"><value>jntState</value></simple>  
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>  
+  	<simple name="UpdateProperties" type="string">
+  	  <value>properties/YoubotSimulatorDriver.cpf</value> 
+  	</simple>
+  </struct>
+</properties>

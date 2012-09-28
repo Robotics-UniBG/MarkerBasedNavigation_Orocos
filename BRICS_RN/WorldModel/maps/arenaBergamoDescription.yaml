@@ -1,0 +1,15 @@
+fileName: arenaBergamo
+resolution: 0.004
+width: 758
+height: 1014
+boardX: 0
+boardY: 0
+freeThreshold: 0.196
+occupiedThreshold: 0.65
+origin: [-1.5, 0.0, 1.57]
+segment-0: [0, 4, 4, 750]
+segment-1: [4, 754, 250, 4]
+segment-2: [254, 758, 4, 250]
+segment-3: [258, 1008, 250, 4]
+segment-4: [754, 4, 4, 1000]
+segment-5: [4, 0, 750, 4]

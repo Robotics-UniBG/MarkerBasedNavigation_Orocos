@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+
+<simple name="Import" type="string"><value>YoubotDriverBergamo</value></simple>
+<simple name="Import" type="string"><value>GUIAdapter</value></simple> 
+<simple name="Import" type="string"><value>GUIDataTypes</value></simple>
+<simple name="Import" type="string"><value>rtt_rosnode</value></simple>
+<simple name="Import" type="string"><value>rtt_motion_control_msgs</value></simple>
+<simple name="Import" type="string"><value>rtt_geometry_msgs</value></simple>
+<simple name="Import" type="string"><value>rtt_nav_msgs</value></simple>
+<simple name="Import" type="string"><value>HokuyoDriver</value></simple> 
+
+
+   <struct name="YoubotDriver" type="YoubotDriver::YoubotDriver">
+  
+    <simple name="Server" type="boolean"><value>1</value></simple>
+    <simple name="UseNamingService" type="boolean"><value>1</value></simple>
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="short"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.002</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Peers" type="PropertyBag">
+      
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>0</value></simple>
+    <simple name="AutoStart" type="boolean"><value>0</value></simple>
+    
+  	<simple name="UpdateProperties" type="string">
+  		<value>properties/YoubotDriver.cpf</value> 
+  	</simple>
+  </struct>
+  
+</properties>

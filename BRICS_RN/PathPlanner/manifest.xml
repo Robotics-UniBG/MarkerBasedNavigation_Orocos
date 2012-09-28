@@ -1,0 +1,16 @@
+<package>
+    <description brief="Path Planner">
+        This package contains the Path Planner component
+    </description>
+    <license></license>
+    <author>Luca Gherardi and Alexey Zakharov</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="rtt_brics_rn_msgs"/>
+    <depend package="rtt_nav_msgs"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="rtt_sensor_msgs"/>
+    <rosdep name="glib-2.0"/>
+</package>
+

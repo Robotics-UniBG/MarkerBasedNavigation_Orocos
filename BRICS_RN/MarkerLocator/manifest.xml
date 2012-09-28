@@ -1,0 +1,19 @@
+<package>
+    <description brief="Marker local tracker stack">
+        This package contains the components for BCH marker tracker stack
+    </description>
+    <license></license>
+		<author>Luca Gherardi and Aldo Biziak</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="artoolkitplus"/>
+    <depend package="image_transport"/>
+    <depend package="cv_bridge"/>
+    <depend package="rtt_mbn_msgs"/>
+    <depend package="rtt_std_msgs"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="mbn_common"/>
+    <rosdep name="opencv2.3"/>
+    <rosdep name="bzr"/>
+</package>

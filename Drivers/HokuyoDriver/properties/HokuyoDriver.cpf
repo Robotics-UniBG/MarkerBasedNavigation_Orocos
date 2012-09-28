@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="min_ang" type="double"><description>The angle of the first range measurement in radians (range is [-π,π], though most devices have a smaller feasible range).</description><value>-1.300000000000000044408921</value></simple>
+  <simple name="max_ang" type="double"><description>The angle of the last range measurement in radians (range is [-π,π], though most devices have a smaller feasible range).</description><value>1.300000000000000044408921</value></simple>
+  <simple name="intensity" type="boolean"><description>Whether or not the hokuyo returns intensity values.</description><value>0</value></simple>
+  <simple name="cluster" type="long"><description>The number of adjacent range measurements to cluster into a single reading; the shortest reading from the cluster is reported.</description><value>1</value></simple>
+  <simple name="skip" type="long"><description>The number of scans to skip between each measured scan. This controls the update rate. For a UTM-30LX, the hokuyo will scan at 40Hz, so setting skip to 1 makes it publish at 20Hz.</description><value>0</value></simple>
+  <simple name="port" type="string"><description>The port where the hokuyo device can be found (default: /dev/ttyACM0).</description><value>/dev/ttyACM0</value></simple>
+  <simple name="calibrate_time" type="boolean"><description>Whether the node should calibrate the hokuyo's time offset on startup. If true, the node will exchange of series of messages with the device in order to determine the time delay in the USB connection. This calibration step is necessary to produce accurate time stamps on scans.</description><value>1</value></simple>
+  <simple name="frame_id" type="string"><description>The frame in which laser scans will be returned. This frame should be at the optical center of the laser, with the x-axis along the zero degree ray, and the y-axis along the 90 degree ray.</description><value>/laser</value></simple>
+  <simple name="time_offset" type="double"><description>An offet to add to the timestamp before publication of a scan Range: -0.25 to 0.25.</description><value>0</value></simple>
+  <simple name="allow_unsafe_settings" type="boolean"><description>Turn this on if you wish to use the UTM-30LX with an unsafe angular range. Turning this option on may cause occasional crashes or bad data. This option is a tempory workaround that will hopefully be removed in an upcoming driver version.</description><value>0</value></simple>
+  <simple name="max_ang_limit" type="double"><description>Read only parameter indicating the smallest allowed value for ~min_ang on the currently connected device.</description><value>3.341318971676748128297053e-28</value></simple>
+  <simple name="max_ang_limit" type="double"><description>Read only parameter indicating the largest allowed value for ~max_ang on the currently connected device.</description><value>3.341318971676748128297053e-28</value></simple>
+  <simple name="min_range" type="double"><description>Read only parameter indicating the smallest distance that can be measured by the currently connected device.</description><value>5.281435523135221512750927e-270</value></simple>
+  <simple name="max_range" type="double"><description>Read only parameter indicating the largest distance that can be measured by the currently connected device.</description><value>1.976262583364986176706275e-323</value></simple>
+  <simple name="min_ang_limit" type="double"><description>Read only parameter indicating the smallest allowed value for ~min_ang on the currently connected device.</description><value>3.341318971676748128297053e-28</value></simple>
+</properties>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <struct name="path" type="/geometry_msgs/Pose2D[]">
+     <struct name="Element0" type="/geometry_msgs/Pose2D">
+        <description>Item</description>
+        <simple name="x" type="double"><description>Part</description><value>1</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>-0.1000000000000000055511151</value></simple>
+        <simple name="theta" type="double"><description>Part</description><value>0</value></simple>
+     </struct>
+     <struct name="Element1" type="/geometry_msgs/Pose2D">
+        <description>Item</description>
+        <simple name="x" type="double"><description>Part</description><value>2</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="theta" type="double"><description>Part</description><value>0</value></simple>
+     </struct>
+     <struct name="Element2" type="/geometry_msgs/Pose2D">
+        <description>Item</description>
+        <simple name="x" type="double"><description>Part</description><value>3</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>-0.1000000000000000055511151</value></simple>
+        <simple name="theta" type="double"><description>Part</description><value>0</value></simple>
+     </struct>
+  </struct>
+  <struct name="Velocity" type="/brics_rn_msgs/Velocity">
+     <simple name="v" type="double"><description>Part</description><value>0.2000000000000000111022302</value></simple>
+     <simple name="v_dot" type="double"><description>Part</description><value>0</value></simple>
+     <simple name="w" type="double"><description>Part</description><value>0</value></simple>
+     <simple name="w_dot" type="double"><description>Part</description><value>0</value></simple>
+  </struct>
+  <simple name="goalDistanceThreeshold" type="float"><description>min difference between current pose and target pose in order to consider the goal position reached</description><value>0.1</value></simple>
+  <simple name="goalOrientationThreeshold" type="float"><description>min difference between current theta and target theta in order to consider the goal orientation reached</description><value>0.1</value></simple>
+</properties>

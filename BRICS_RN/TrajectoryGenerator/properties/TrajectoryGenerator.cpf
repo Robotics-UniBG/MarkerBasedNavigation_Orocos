@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="linVel" type="double"><value>0.3</value></simple>
+  <simple name="angVel" type="double"><value>0.3</value></simple>
+</properties>

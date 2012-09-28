@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="cameraDistorsionParamPath" type="string"><description>Camera parameters file path</description><value>./camera/spotLightCam0.cal</value></simple>
+  <simple name="cameraWidth" type="long"><description>Camera width</description><value>640</value></simple>
+  <simple name="cameraHeight" type="long"><description>Camera height</description><value>480</value></simple>
+  <simple name="markersBaseWidth" type="double"><description>Markers Base width</description><value>40</value></simple>
+  <simple name="min_confidence" type="double"><description>min confidence to recognize markers</description><value>0.51</value></simple>
+  <simple name="blackWhiteThreshold" type="long"><description>set threshold for black/white, if value is &lt;=0, a value will be set automatically (generally 100 for a dark enviroment, 200 for an bright enviroment)</description><value>0</value></simple>
+  <simple name="useBCH" type="boolean"><description>set to true if you want use BCH code</description><value>1</value></simple>
+  <simple name="enableDetectOnlyTheBest" type="boolean"><description>boolean to detect only the marker with the best confidence</description><value>0</value></simple>
+  <simple name="enableIDfilter" type="boolean"><description>boolean to activate markerID filter</description><value>1</value></simple>
+  <struct name="markersVectorIDtoFind" type="int32[]">
+     <description>Markers IDs list</description>
+     <simple name="Element0" type="long"><description>Sequence Element</description><value>0</value></simple>
+     <simple name="Element1" type="long"><description>Sequence Element</description><value>1</value></simple>
+     <simple name="Element2" type="long"><description>Sequence Element</description><value>2</value></simple>
+     <simple name="Element3" type="long"><description>Sequence Element</description><value>3</value></simple>
+     <simple name="Element4" type="long"><description>Sequence Element</description><value>4</value></simple>
+     <simple name="Element5" type="long"><description>Sequence Element</description><value>5</value></simple>
+     <simple name="Element6" type="long"><description>Sequence Element</description><value>6</value></simple>
+     <simple name="Element7" type="long"><description>Sequence Element</description><value>7</value></simple>
+     <simple name="Element8" type="long"><description>Sequence Element</description><value>8</value></simple>
+     <simple name="Element9" type="long"><description>Sequence Element</description><value>9</value></simple>
+     <simple name="Element10" type="long"><description>Sequence Element</description><value>10</value></simple>
+     <simple name="Element11" type="long"><description>Sequence Element</description><value>11</value></simple>
+     <simple name="Element12" type="long"><description>Sequence Element</description><value>12</value></simple>
+     <simple name="Element13" type="long"><description>Sequence Element</description><value>13</value></simple>
+     <simple name="Element14" type="long"><description>Sequence Element</description><value>14</value></simple>
+     <simple name="Element15" type="long"><description>Sequence Element</description><value>15</value></simple>
+     <simple name="Element16" type="long"><description>Sequence Element</description><value>16</value></simple>
+     <simple name="Element17" type="long"><description>Sequence Element</description><value>17</value></simple>
+     <simple name="Element18" type="long"><description>Sequence Element</description><value>18</value></simple>
+     <simple name="Element19" type="long"><description>Sequence Element</description><value>19</value></simple>
+     <simple name="Element20" type="long"><description>Sequence Element</description><value>20</value></simple>
+     <simple name="Element21" type="long"><description>Sequence Element</description><value>21</value></simple>
+     <simple name="Element22" type="long"><description>Sequence Element</description><value>22</value></simple>
+     <simple name="Element23" type="long"><description>Sequence Element</description><value>23</value></simple>
+     <simple name="Element24" type="long"><description>Sequence Element</description><value>24</value></simple>
+     <simple name="Element25" type="long"><description>Sequence Element</description><value>25</value></simple>
+     <simple name="Element26" type="long"><description>Sequence Element</description><value>26</value></simple>
+     <simple name="Element27" type="long"><description>Sequence Element</description><value>27</value></simple>
+     <simple name="Element28" type="long"><description>Sequence Element</description><value>28</value></simple>
+     <simple name="Element29" type="long"><description>Sequence Element</description><value>29</value></simple>
+     <simple name="Element30" type="long"><description>Sequence Element</description><value>30</value></simple>
+     <simple name="Element31" type="long"><description>Sequence Element</description><value>31</value></simple>
+     <simple name="Element32" type="long"><description>Sequence Element</description><value>32</value></simple>
+     <simple name="Element33" type="long"><description>Sequence Element</description><value>33</value></simple>
+     <simple name="Element34" type="long"><description>Sequence Element</description><value>34</value></simple>
+     <simple name="Element35" type="long"><description>Sequence Element</description><value>35</value></simple>
+     <simple name="Element36" type="long"><description>Sequence Element</description><value>36</value></simple>
+     <simple name="Element37" type="long"><description>Sequence Element</description><value>37</value></simple>
+     <simple name="Element38" type="long"><description>Sequence Element</description><value>38</value></simple>
+     <simple name="Element39" type="long"><description>Sequence Element</description><value>39</value></simple>
+     <simple name="Element40" type="long"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element41" type="long"><description>Sequence Element</description><value>41</value></simple>
+     <simple name="Element42" type="long"><description>Sequence Element</description><value>42</value></simple>
+     <simple name="Element43" type="long"><description>Sequence Element</description><value>43</value></simple>
+     <simple name="Element44" type="long"><description>Sequence Element</description><value>44</value></simple>
+     <simple name="Element45" type="long"><description>Sequence Element</description><value>45</value></simple>
+     <simple name="Element46" type="long"><description>Sequence Element</description><value>46</value></simple>
+     <simple name="Element47" type="long"><description>Sequence Element</description><value>47</value></simple>
+     
+  </struct>
+<struct name="markersDimensions" type="float64[]">
+     <description>Markers dimensions list</description>
+     <simple name="Element0" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element1" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element2" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element3" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element4" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element5" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element6" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element7" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element8" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element9" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element10" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element11" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element12" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element13" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element14" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element15" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element16" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element17" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element18" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element19" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element20" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element21" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element22" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element23" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element24" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element25" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element26" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element27" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element28" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element29" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element30" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element31" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element32" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element33" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element34" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element35" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element36" type="double"><description>Sequence Element</description><value>36</value></simple>
+     <simple name="Element37" type="double"><description>Sequence Element</description><value>37</value></simple>
+     <simple name="Element38" type="double"><description>Sequence Element</description><value>38</value></simple>
+     <simple name="Element39" type="double"><description>Sequence Element</description><value>39</value></simple>
+     <simple name="Element40" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element41" type="double"><description>Sequence Element</description><value>41</value></simple>
+     <simple name="Element42" type="double"><description>Sequence Element</description><value>42</value></simple>
+     <simple name="Element43" type="double"><description>Sequence Element</description><value>43</value></simple>
+     <simple name="Element44" type="double"><description>Sequence Element</description><value>44</value></simple>
+     <simple name="Element45" type="double"><description>Sequence Element</description><value>45</value></simple>
+     <simple name="Element46" type="double"><description>Sequence Element</description><value>46</value></simple>
+     <simple name="Element47" type="double"><description>Sequence Element</description><value>47</value></simple>
+  </struct>
+
+<!-- OLD CAMERA HOLDER -->
+<!--
+  <struct name="fixedCameratransform" type="/geometry_msgs/Pose">
+     <description>this is the inner roto-translation that could be used if activateFixedCameraMode=true</description>
+     <struct name="position" type="/geometry_msgs/Point">
+        <description>Part</description>
+        <simple name="x" type="double"><description>Part</description><value>0.2904269999999999907203119</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>0.04000000000000000083266727</value></simple>
+        <simple name="z" type="double"><description>Part</description><value>0.4847500000000000142108547</value></simple>
+     </struct>
+     <struct name="orientation" type="/geometry_msgs/Quaternion">
+        <description>Part</description>
+        <simple name="x" type="double"><description>Part</description><value>0.605264513355796784921381</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>-0.6046413882567365227771461</value></simple>
+        <simple name="z" type="double"><description>Part</description><value>0.3658624508189032287219788</value></simple>
+        <simple name="w" type="double"><description>Part</description><value>-0.3663445476050141702550889</value></simple>
+     </struct>
+-->
+<!-- NEW CAMERA HOLDER -->
+ <struct name="fixedCameratransform" type="/geometry_msgs/Pose">
+     <description>this is the inner roto-translation that could be used if activateFixedCameraMode=true</description>
+     <struct name="position" type="/geometry_msgs/Point">
+        <description>Part</description>
+        <simple name="x" type="double"><description>Part</description><value>0.248988</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="z" type="double"><description>Part</description><value>0.497012</value></simple>
+     </struct>
+     <struct name="orientation" type="/geometry_msgs/Quaternion">
+        <description>Part</description>
+        <simple name="x" type="double"><description>Part</description><value>-0.632428</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>0.632176</value></simple>
+        <simple name="z" type="double"><description>Part</description><value>-0.316282</value></simple>
+        <simple name="w" type="double"><description>Part</description><value>0.316786</value></simple>
+     </struct>
+  </struct>
+</properties>

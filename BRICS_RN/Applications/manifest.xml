@@ -1,0 +1,32 @@
+<package>
+    <description brief="BRICS_RN Applications">
+        This package contains the BRICS_RN Applications
+    </description>
+    <license></license>
+		<author>Luca Gherardi, Andrea Luzzana, Aldo Biziak</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="mbn_common"/>
+    <depend package="rtt_brics_rn_msgs"/>
+    <depend package="rtt_nav_msgs"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="rtt_sensor_msgs"/>
+    <depend package="rtt_brics_actuator_msgs"/>
+    <depend package="rtt_mbn_msgs"/>
+    <depend package="WorldModel"/>
+    <depend package="PathPlanner"/>
+    <depend package="TrajectoryGenerator"/>
+    <depend package="TrajectoryAdapter"/>
+    <depend package="TrajectoryFollower"/>
+    <depend package="YoubotDriverBergamo"/>
+    <depend package="HokuyoDriver"/>
+    <depend package="RGBCameraDriver"/>
+    <depend package="MarkerLocator"/>
+    <depend package="MarkerPathPlanner"/>
+    <depend package="MarkerPathIterator"/>
+    <depend package="MarkerSearcher"/>
+    <depend package="Coordinator"/>
+    <depend package="GoalPublisher"/>
+</package>
+

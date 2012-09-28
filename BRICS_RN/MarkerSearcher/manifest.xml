@@ -1,0 +1,15 @@
+<package>
+    <description brief="Marker Searcher">
+        This package contains the Marker Searcher component 
+    </description>
+    <license></license>
+    <author>Luca Gherardi</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="mbn_common"/>
+    <depend package="rtt_nav_msgs"/>
+    <depend package="rtt_std_msgs"/>
+    <depend package="rtt_mbn_msgs"/>
+</package>
+

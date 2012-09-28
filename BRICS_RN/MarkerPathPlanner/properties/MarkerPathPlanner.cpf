@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="startId" type="long"><value>1</value></simple>
+  <simple name="goalId" type="long"><value>5</value></simple>
+</properties>

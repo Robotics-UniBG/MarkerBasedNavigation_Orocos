@@ -1,0 +1,17 @@
+<package>
+    <description brief="Marker Path Iterator Component">
+    	This package contains the Marker Path Iterator component
+    </description>
+    <license></license>
+    <author>Luca Gherardi and Andrea Luzzana</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="angles"/>
+    <depend package="mbn_common"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="rtt_nav_msgs"/>
+    <depend package="rtt_mbn_msgs"/>
+    <depend package="rtt_std_msgs"/>
+</package>
+

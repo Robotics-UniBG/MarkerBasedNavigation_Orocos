@@ -1,0 +1,60 @@
+require "rttlib"
+require "TMCL"
+
+youbot=rtt.getTC()
+
+TMCL.set_sendMBX(youbot:getOperation("sendMBX"))
+
+print("unlock the password protected parameters for the base")
+local passwd = io.read("*number")
+TMCL.sap(248,2,passwd)
+TMCL.sap(248,3,passwd)
+TMCL.sap(248,4,passwd)
+TMCL.sap(248,5,passwd)
+print("set and store wheel max currents")
+TMCL.sap(6,2,2850)
+TMCL.sap(6,3,2850)
+TMCL.sap(6,4,2850)
+TMCL.sap(6,5,2850)
+TMCL.stap(6,2)
+TMCL.stap(6,3)
+TMCL.stap(6,4)
+TMCL.stap(6,5)
+
+TMCL.sap(248,2,0)
+TMCL.sap(248,3,0)
+TMCL.sap(248,4,0)
+TMCL.sap(248,5,0)
+print("locked the password protected parameters for the base")
+
+print("unlock the password protected parameters for the arm")
+passwd = io.read("*number")
+TMCL.sap(248,7,passwd)
+TMCL.sap(248,8,passwd)
+TMCL.sap(248,9,passwd)
+TMCL.sap(248,10,passwd)
+TMCL.sap(248,11,passwd)
+
+print("set and store arm max currents")
+TMCL.sap(6,7,3000)
+TMCL.sap(6,8,3000)
+TMCL.sap(6,9,3000)
+TMCL.sap(6,10,3000)
+TMCL.sap(6,11,1000)
+TMCL.stap(6,7)
+TMCL.stap(6,8)
+TMCL.stap(6,9)
+TMCL.stap(6,10)
+TMCL.stap(6,11)
+
+print("set and store motor 5 poles")
+TMCL.sap(253,11,8)
+TMCL.stap(253,11)
+
+TMCL.sap(248,7,0)
+TMCL.sap(248,8,0)
+TMCL.sap(248,9,0)
+TMCL.sap(248,10,0)
+TMCL.sap(248,11,0)
+print("locked the password protected parameters for the arm")
+

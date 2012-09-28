@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="pathA1_A2_file" type="string"><description>The path of file containing the markers between A1 and A2</description><value>markerPaths/pathA1_A2.yaml</value></simple>
+  <simple name="pathA2_A1_file" type="string"><description>The path of file containing the markers between A2 and A1</description><value>markerPaths/pathA2_A1.yaml</value></simple>
+</properties>

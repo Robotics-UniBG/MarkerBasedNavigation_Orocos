@@ -1,0 +1,21 @@
++--------------------------------------------+
+| Last modified 05.04.2012 by Andrea Luzzana |
++--------------------------------------------+
+
+How to derive the robot model from urdf.xacro files.
+
+Xacro is used to evaluate and apply macros to urdf files. All the needed information is within the urdf files, hence, no
+additional files are required in order to generate the standard urdf file.
+
+Xacro is distributed with ros, see ros website for further information.
+
+Instruction to run xacro on urdf.xacro files:
+
+1- cd to the folder where the main urdf.xacro file is located (e.g. $HOME/4thRC/stacks/youbot-ros-pkg/youbot_common/youbot_description/robots)
+2- run the command:
+	rosrun xacro xacro.py youbot.urdf.xacro > youbot_complete.urdf.xml
+	
+   where youbot.urdf.xacro is the name of the main urdf file with macros to be processed and youbot_complete.urdf.xml is
+   the plain urdf file.
+   
+   You can use arm.urdf.xacro as main file, in that case you will obtain only the arm model of the robot.		

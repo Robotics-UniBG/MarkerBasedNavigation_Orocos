@@ -1,0 +1,27 @@
+<package>
+  <description brief="YoubotDriverBergamo">
+
+    Real-time safe Orocos RTT Youbot driver component developed 
+    on the Base of the youbot_driver_rtt component from University of Leuven (Markus Klotzbuecher, Ruben Smits, Steven Bellens)
+
+  </description>
+  <author>Luca Gherardi</author>
+  <license>LGPLv2.1 / BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/youbot_master_rtt</url>
+  <depend package="rtt"/>
+  <depend package="youbot_msgs"/>
+  <depend package="rtt_youbot_msgs"/>
+  <depend package="tf"/>
+  <depend package="rFSM"/>
+  <depend package="soem_core"/>
+  <depend package="rtt_rosnode"/>
+  <depend package="rtt_std_msgs"/>
+  <depend package="rtt_geometry_msgs"/>
+  <depend package="rtt_nav_msgs"/>
+  <depend package="rtt_sensor_msgs"/>
+  <depend package="rtt_motion_control_msgs"/>
+
+</package>
+
+

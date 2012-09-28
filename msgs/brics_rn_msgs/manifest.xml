@@ -1,0 +1,14 @@
+<package>
+  <description brief="brics_rn_msgs">
+
+     BRICS Robust Navigation messages
+
+  </description>
+  <author>Luca Gherardi</author>
+  <license>BSD</license>
+  <depend package="geometry_msgs"/>
+  <depend package="nav_msgs"/> 
+  <depend package="motion_control_msgs"/>  
+</package>
+
+

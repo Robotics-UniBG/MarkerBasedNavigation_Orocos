@@ -1,0 +1,17 @@
+<package>
+    <description brief="World Model">
+        This package contains the World Model component
+    </description>
+    <license></license>
+    <author>Luca Gherardi</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="rtt_brics_rn_msgs"/>
+    <depend package="rtt_nav_msgs"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="rtt_sensor_msgs"/>
+    <rosdep name="yaml-cpp"/>
+    <rosdep name="sdl-image"/>
+</package>
+

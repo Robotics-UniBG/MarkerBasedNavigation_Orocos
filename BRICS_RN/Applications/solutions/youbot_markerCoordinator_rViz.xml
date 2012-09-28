@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+
+
+<simple name="Import" type="string"><value>YoubotDriverBergamo</value></simple>
+<simple name="Import" type="string"><value>rtt_rosnode</value></simple>
+<simple name="Import" type="string"><value>TrajectoryGenerator</value></simple>
+<simple name="Import" type="string"><value>TrajectoryAdapter</value></simple>
+<simple name="Import" type="string"><value>TrajectoryFollower</value></simple>
+<simple name="Import" type="string"><value>HokuyoDriver</value></simple>
+<simple name="Import" type="string"><value>RGBCameraDriver</value></simple>
+<simple name="Import" type="string"><value>MarkerLocator</value></simple>
+<simple name="Import" type="string"><value>MarkerPathIterator</value></simple>
+<simple name="Import" type="string"><value>MarkerPathPlanner</value></simple> 
+<simple name="Import" type="string"><value>MarkerSearcher</value></simple> 
+<simple name="Import" type="string"><value>Coordinator</value></simple> 
+<simple name="Import" type="string"><value>GoalPublisher</value></simple> 
+
+<!-- Buffer connection for markers pose -->
+<struct name="marker_pose" type="ConnPolicy">
+  <simple name="type" type="long"><value>1</value></simple>   <!-- 0 = data, 1 - buffer -->
+  <simple name="size" type="long"><value>10</value></simple> 
+</struct>
+
+<!-- odometry from youbot -->
+<struct name="ROS_Odometry" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/odom</value></simple> 
+</struct> 
+
+<!-- joints States from youbot -->
+<struct name="ROS_Joints_States" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/base/joint_states</value></simple> 
+</struct> 
+
+<!-- Laser Scanse from Hokuyo -->
+<struct name="ROS_Laser_Scans" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/base/laser_scans</value></simple> 
+</struct>
+
+<!-- odometry from youbot -->
+<struct name="ROS_Goal_Array" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->
+  <simple name="name_id" type="string"><value>/base/goal_array</value></simple>
+</struct>
+
+  <struct name="YoubotDriver" type="YoubotDriver::YoubotDriver">
+  
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.002</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="baseTwistInPort" type="string"><value>twist</value></simple>
+      <simple name="baseOdometryOutPort" type="string"><value>odo</value></simple>
+      <simple name="baseOdometryOutPort" type="string"><value>ROS_Odometry</value></simple>
+      <simple name="baseJointsStatesOutPort" type="string"><value>ROS_Joints_States</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    
+  	<simple name="UpdateProperties" type="string">
+  		<value>properties/YoubotDriver.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="GoalPublisher" type="Navigation::GoalPublisher">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="goalOutPort" type="string"><value>goal_from_publisher</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+  </struct>
+  
+  <struct name="Coordinator" type="Navigation::CoordinatorComponent">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="goalInputPort" type="string"><value>goal_from_publisher</value></simple>    
+      <simple name="eventInputPort" type="string"><value>coordinator_event_input</value></simple>
+      <simple name="eventInputPort" type="string"><value>event_goal_reached</value></simple>
+      <simple name="eventOutputPort" type="string"><value>coordinator_event_output</value></simple>
+      <simple name="goalMarkerIDOutputPort" type="string"><value>marker_goal</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/Coordinator.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="MarkerPathPlanner" type="Navigation::MarkerPathPlannerComponent">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="markerIdPathOutPort" type="string"><value>marker_path</value></simple>
+     <simple name="goalIdInPort" type="string"><value>marker_goal</value></simple>
+     <simple name="visibleMarkersInPort" type="string"><value>marker_ids</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/MarkerPathPlanner.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="MarkerLocator" type="VisualNavigation::MarkerLocatorComponent">   
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.030</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="imageInPort" type="string"><value>imageConnection</value></simple>
+      <simple name="markersPosesOutPort" type="string"><value>marker_pose</value></simple>
+      <simple name="markersIDsOutPort" type="string"><value>marker_ids</value></simple>
+    </struct>
+  	<simple name="UpdateProperties" type="string">
+  		<value>properties/MarkerLocator.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="MarkerPathIterator" type="Navigation::MarkerPathIteratorComponent">
+    
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="markerIdPathInPort" type="string"><value>marker_path</value></simple>
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+      <simple name="markersPosesInPort" type="string"><value>marker_pose</value></simple>
+      <simple name="pathOutPort" type="string"><value>path</value></simple>
+      <simple name="goalArrayOutPort" type="string"><value>ROS_Goal_Array</value></simple>
+      <simple name="eventInPort" type="string"><value>coordinator_event_output</value></simple>
+      <simple name="eventInPort" type="string"><value>event_goal_reached</value></simple>
+      <simple name="eventOutPort" type="string"><value>coordinator_event_input</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+   <simple name="UpdateProperties" type="string">
+  		<value>properties/MarkerPathIterator.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="MarkerSearcher" type="Navigation::MarkerSearcherComponent">
+    
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.1</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+      <simple name="markersIDsInPort" type="string"><value>marker_ids</value></simple>
+      <simple name="pathOutPort" type="string"><value>path</value></simple>
+      <simple name="eventInPort" type="string"><value>coordinator_event_output</value></simple>
+      <simple name="eventInPort" type="string"><value>event_goal_reached</value></simple>
+      <simple name="eventOutPort" type="string"><value>coordinator_event_input</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+   <simple name="UpdateProperties" type="string">
+  		<value>properties/MarkerSearcher.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryGenerator" type="Navigation::TrajectoryGenerator">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="trajectoryOutPort" type="string"><value>planned_traj</value></simple>
+      <simple name="pathInPort" type="string"><value>path</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryGenerator.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryAdapter" type="Navigation::TrajectoryAdapter">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.5</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="trajectoryOutPort" type="string"><value>adapted_traj</value></simple>
+      <simple name="trajectoryInPort" type="string"><value>planned_traj</value></simple>
+      <simple name="laserScanInPort" type="string"><value>laser</value></simple>
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+      <simple name="motionStatusOutPort" type="string"><value>event_goal_reached</value></simple>
+      <simple name="motionStatusInPort" type="string"><value>event_motion_status</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryAdapter.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryFollower" type="Navigation::TrajectoryFollower">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.02</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+      <simple name="twistOutPort" type="string"><value>twist</value></simple>
+      <simple name="targetTrajectoryInPort" type="string"><value>adapted_traj</value></simple>
+      <simple name="motionStatusOutPort" type="string"><value>event_motion_status</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryFollower.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="HokuyoDriver" type="Hokuyo::HokuyoDriverComponent">
+    
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.1</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="laserScanOutPort" type="string"><value>ROS_Laser_Scans</value></simple>
+      <simple name="laserScanOutPort" type="string"><value>laser</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+   <simple name="UpdateProperties" type="string">
+  		<value>properties/HokuyoDriver.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="RGBCameraDriver" type="VisualNavigation::RGBCameraDriverComponent">
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.030</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="imageOutPort" type="string"><value>imageConnection</value></simple>
+    </struct>
+  	<simple name="UpdateProperties" type="string">
+  		<value>properties/RGBCameraOpenCv.cpf</value> 
+  	</simple>
+  </struct>
+  
+  
+  
+</properties>

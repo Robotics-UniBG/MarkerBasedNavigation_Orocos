@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="cameraDevice" type="long"><description>...</description><value>0</value></simple>
+  <simple name="alwaysCopy" type="boolean"><description>...</description><value>0</value></simple>
+  <simple name="width" type="long"><description>...</description><value>640</value></simple>
+  <simple name="height" type="long"><description>...</description><value>480</value></simple>
+  <simple name="numOfImagesToDiscard" type="long"><description>...</description><value>-1</value></simple>
+</properties>

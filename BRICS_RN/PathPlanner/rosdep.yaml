@@ -1,0 +1,4 @@
+glib-2.0:
+  ubuntu: 
+      apt:
+        packages: libglib2.0-dev

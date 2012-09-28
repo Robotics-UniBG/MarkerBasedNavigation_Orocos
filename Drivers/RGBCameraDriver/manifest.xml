@@ -1,0 +1,15 @@
+<package>
+    <description brief="RGB Camera Open Cv">
+        This package contains the components for the visual navigation stack
+    </description>
+    <license></license>
+		<author>Luca Gherardi and Aldo Biziak</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="rtt_sensor_msgs"/>
+    <depend package="cv_bridge" />
+    <rosdep name="opencv2.3"/>
+    <depend package="mbn_common"/>
+
+</package>
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="cameraDistorsionParamPath" type="string"><description>Camera parameters file path</description><value>./camera/microsoft_lifecam_vx-2000.cal</value></simple>
+  <simple name="cameraWidth" type="long"><description>Camera width</description><value>640</value></simple>
+  <simple name="cameraHeight" type="long"><description>Camera height</description><value>480</value></simple>
+  <simple name="markersBaseWidth" type="double"><description>Markers Base width</description><value>40</value></simple>
+  <simple name="min_confidence" type="double"><description>min confidence to recognize markers</description><value>0.51</value></simple>
+  <simple name="blackWhiteThreshold" type="long"><description>set threshold for black/white, if value is &lt;=0, a value will be set automatically (generally 100 for a dark enviroment, 200 for an bright enviroment)</description><value>0</value></simple>
+  <simple name="useBCH" type="boolean"><description>set to true if you want use BCH code</description><value>1</value></simple>
+  <simple name="enableDetectOnlyTheBest" type="boolean"><description>boolean to detect only the marker with the best confidence</description><value>0</value></simple>
+  <simple name="enableIDfilter" type="boolean"><description>boolean to activate markerID filter</description><value>1</value></simple>
+  <struct name="markersVectorIDtoFind" type="int32[]">
+     <description>Markers IDs list</description>
+     <simple name="Element0" type="long"><description>Sequence Element</description><value>0</value></simple>
+     <simple name="Element1" type="long"><description>Sequence Element</description><value>3</value></simple>
+     <simple name="Element2" type="long"><description>Sequence Element</description><value>64</value></simple>
+     <simple name="Element3" type="long"><description>Sequence Element</description><value>65</value></simple>
+     <simple name="Element4" type="long"><description>Sequence Element</description><value>128</value></simple>
+     <simple name="Element5" type="long"><description>Sequence Element</description><value>129</value></simple>
+     <simple name="Element6" type="long"><description>Sequence Element</description><value>131</value></simple>
+     <simple name="Element7" type="long"><description>Sequence Element</description><value>1</value></simple>
+  </struct>
+  <struct name="markersDimensions" type="float64[]">
+     <description>Markers dimensions list</description>
+     <simple name="Element0" type="double"><description>Sequence Element</description><value>40</value></simple>
+     <simple name="Element1" type="double"><description>Sequence Element</description><value>80</value></simple>
+     <simple name="Element2" type="double"><description>Sequence Element</description><value>80</value></simple>
+     <simple name="Element3" type="double"><description>Sequence Element</description><value>80</value></simple>
+     <simple name="Element4" type="double"><description>Sequence Element</description><value>80</value></simple>
+     <simple name="Element5" type="double"><description>Sequence Element</description><value>80</value></simple>
+     <simple name="Element6" type="double"><description>Sequence Element</description><value>80</value></simple>
+     <simple name="Element7" type="double"><description>Sequence Element</description><value>40</value></simple>
+  </struct>
+  <simple name="cameraDistorsionParamPath" type="string"><description>Camera parameters file path</description><value></value></simple>
+  <struct name="fixedCameratransform" type="/geometry_msgs/Pose">
+     <description>this is the inner roto-translation that could be used if activateFixedCameraMode=true</description>
+     <struct name="position" type="/geometry_msgs/Point">
+        <description>Part</description>
+        <simple name="x" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="z" type="double"><description>Part</description><value>0</value></simple>
+     </struct>
+     <struct name="orientation" type="/geometry_msgs/Quaternion">
+        <description>Part</description>
+        <simple name="x" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="y" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="z" type="double"><description>Part</description><value>0</value></simple>
+        <simple name="w" type="double"><description>Part</description><value>1</value></simple>
+     </struct>
+  </struct>
+</properties>

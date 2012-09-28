@@ -1,0 +1,13 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b youbot_master_rtt is an <a href="http://www.orocos.org/">OROCOS</a> component providing basic functionality for the <a href="http://www.kuka-youbot.com/en/">Youbot</a>:
+
+As the arm and gripper did not arrive yet, only commands for the mobile base are 
+implemented. The component sets up communication with the Ethercat slaves and allows 
+setting the motors in different control modes. It listen for velocity commands and 
+publishes motor status and odometry information. Timeouts are implemented to
+turn off the motors when communication is lost.
+
+*/

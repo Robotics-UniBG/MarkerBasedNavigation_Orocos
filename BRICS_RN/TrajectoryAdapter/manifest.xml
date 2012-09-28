@@ -1,0 +1,17 @@
+<package>
+    <description brief="Trajecotry Adapter">
+        This package contains the Trajectory Adapter component
+    </description>
+    <license></license>
+		<author>Luca Gherardi and Alexey Zakharov</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="mbn_common"/>
+    <depend package="rtt_brics_rn_msgs"/>
+    <depend package="rtt_nav_msgs"/>
+    <depend package="rtt_geometry_msgs"/>
+    <depend package="rtt_sensor_msgs"/>
+    <depend package="rtt_std_msgs"/>
+</package>
+

@@ -1,0 +1,5 @@
+<launch>
+
+<node name="YoubotMaster" pkg="ocl" type="rttlua-gnulinux" args="-i $(find youbot_master_rtt)/lua/test_arm.lua" output="screen" required="true"/>
+
+</launch>

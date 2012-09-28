@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="maxLinVel" type="double"><value>0.3</value></simple>
+  <simple name="maxAngVel" type="double"><value>0.3</value></simple>
+  <simple name="maxAngAcc" type="double"><value>0.1</value></simple>
+</properties>

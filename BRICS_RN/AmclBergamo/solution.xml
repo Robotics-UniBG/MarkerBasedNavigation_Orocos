@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+
+
+
+<simple name="Import" type="string"><value>AmclBergamo</value></simple> 
+  
+  <struct name="AmclBergamo" type="Navigation::AmclBergamo">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="short"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.5</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <!--<simple name="trajectoryOutPort" type="string"><value>adapted_traj</value></simple>
+      <simple name="trajectoryInPort" type="string"><value>planned_traj</value></simple>
+      <simple name="laserScanInPort" type="string"><value>laser</value></simple>
+      <simple name="odometryInPort" type="string"><value>odom</value></simple>-->
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/AmclBergamo.cpf</value> 
+  	</simple>
+  </struct>
+  
+  
+</properties>

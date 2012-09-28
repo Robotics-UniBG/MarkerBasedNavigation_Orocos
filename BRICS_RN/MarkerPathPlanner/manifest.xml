@@ -1,0 +1,14 @@
+<package>
+    <description brief="Marker Path Planner">
+        This package contains the Marker Path Planner component 
+    </description>
+    <license></license>
+    <author>Luca Gherardi</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="mbn_common"/>
+    <depend package="yaml_cpp"/>
+    <depend package="rtt_std_msgs"/>
+    <depend package="rtt_mbn_msgs"/>
+</package>
+

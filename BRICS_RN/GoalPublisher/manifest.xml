@@ -1,0 +1,12 @@
+<package>
+    <description brief="Goal Publisher">
+        This package contains the Goal Publisher component
+    </description>
+    <license></license>
+    <author>Luca Gherardi</author>
+    <depend package="rtt"/>
+    <depend package="ocl"/>
+    <depend package="tf"/>
+    <depend package="rtt_std_msgs"/>
+</package>
+

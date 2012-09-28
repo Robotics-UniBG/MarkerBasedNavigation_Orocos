@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+
+<simple name="Import" type="string"><value>YoubotSimulatorDriver</value></simple>
+<simple name="Import" type="string"><value>rtt_rosnode</value></simple>
+<simple name="Import" type="string"><value>rtt_motion_control_msgs</value></simple>
+<simple name="Import" type="string"><value>TrajectoryGenerator</value></simple>
+<simple name="Import" type="string"><value>TrajectoryAdapter</value></simple>
+<simple name="Import" type="string"><value>TrajectoryFollower</value></simple>
+<simple name="Import" type="string"><value>HokuyoDriver</value></simple>  
+
+<struct name="ROS_VelCommand" type="ConnPolicy">
+  <simple name="transport" type="short"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/arm_1/arm_controller/velocity_command</value></simple>
+</struct>
+<!-- position commands to simulator -->
+<struct name="ROS_PosCommand" type="ConnPolicy">
+  <simple name="transport" type="short"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/arm_1/arm_controller/position_command</value></simple>
+</struct>  
+<!-- torque commands to simulator -->
+<struct name="ROS_TorqCommand" type="ConnPolicy">
+  <simple name="transport" type="short"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/arm_1/arm_controller/torque_command</value></simple>
+</struct>  
+<!-- gripper commands to simulator -->
+<struct name="ROS_GripperCommand" type="ConnPolicy">
+  <simple name="transport" type="short"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/arm_1/gripper_controller/position_command</value></simple>
+</struct>  
+<!-- torque commands to simulator -->
+<struct name="ROS_TwistCommand" type="ConnPolicy">
+  <simple name="transport" type="short"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/cmd_vel</value></simple>
+</struct> 
+
+<!-- joints state from simulator -->
+<struct name="ROS_JointsState" type="ConnPolicy">
+  <simple name="transport" type="short"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/joint_states</value></simple>
+</struct>  
+
+<!-- odometry from youbot -->
+<struct name="ROS_Odometry" type="ConnPolicy">
+  <simple name="transport" type="short"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/odom</value></simple> 
+</struct> 
+
+<!-- goal position from rviz -->
+<struct name="ROS_Goal_Pose" type="ConnPolicy">
+  <simple name="transport" type="short"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/base/goal_position</value></simple> 
+</struct>
+
+  <struct name="YoubotSimulatorDriver" type="youbot_sim_driver::YoubotSimulatorDriver">
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="short"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.01</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+   <struct name="Peers" type="PropertyBag">
+    <simple type="string"><value>TrajectoryFollower</value></simple>
+  </struct>
+    <struct name="Ports" type="PropertyBag">
+      <!-- ports to ROS/GAZEBO simulator -->
+      <simple name="ArmJointsVelOutput_toROS" type="string"><value>ROS_VelCommand</value></simple>
+      <simple name="ArmJointsPosOutput_toROS" type="string"><value>ROS_PosCommand</value></simple>
+      <simple name="ArmJointsTorqOutput_toROS" type="string"><value>ROS_TorqCommand</value></simple>
+      <simple name="GripperJointsPosOutput_toROS" type="string"><value>ROS_GripperCommand</value></simple>
+      <simple name="BaseTwistOutput_toROS" type="string"><value>ROS_TwistCommand</value></simple>
+      <simple name="JointStateInput_fromROS" type="string"><value>ROS_JointsState</value></simple>
+      <simple name="OdometryInput_fromROS" type="string"><value>ROS_Odometry</value></simple>   
+	  <!-- driver components ports -->
+	  <!-- base ports -->          	 
+      <simple name="base_port_cmd_twist" type="string"><value>twist</value></simple>
+  	  <simple name="base_port_odom" type="string"><value>odo</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>  
+  	<simple name="UpdateProperties" type="string">
+  	  <value>properties/YoubotSimulatorDriver.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryFollower" type="Navigation::TrajectoryFollower">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="short"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.02</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+      <simple name="twistOutPort" type="string"><value>twist</value></simple>
+      <simple name="targetTrajectoryInPort" type="string"><value>adapted_traj</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryFollower.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryAdapter" type="Navigation::TrajectoryAdapter">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="short"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.5</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="trajectoryOutPort" type="string"><value>adapted_traj</value></simple>
+      <simple name="trajectoryInPort" type="string"><value>planned_traj</value></simple>
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryAdapter.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryGenerator" type="Navigation::TrajectoryGenerator">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="short"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.5</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="trajectoryOutPort" type="string"><value>planned_traj</value></simple>
+      <simple name="goalInPort" type="string"><value>ROS_Goal_Pose</value></simple>
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryGenerator.cpf</value> 
+  	</simple>
+  </struct>
+
+</properties>

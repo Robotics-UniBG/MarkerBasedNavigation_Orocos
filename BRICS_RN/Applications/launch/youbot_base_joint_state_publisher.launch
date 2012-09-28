@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- load the robot description file -->
+	<!-- <param name="robot_description" command="cat '$(find youbot_model)/urdf/youbot.urdf'" /> -->
+	<param name="robot_description" command="$(find xacro)/xacro.py '$(find youbot_description)/robots/youbot_base.urdf.xacro'"/>
+		<!-- remap from="joint_states" to="youbot_state"/> -->
+	
+	<node pkg="robot_state_publisher" type="state_publisher" name="robot_base_state_publisher" output="screen">
+		<remap from="joint_states" to="base/joint_states"/> 
+	</node>
+
+<node pkg="tf" type="static_transform_publisher" name="front_hokuyo_frame" 
+	args="0 0 0 0 0 0 /base_laser_front_link /laser 1" />
+<!--<node pkg="tf" type="static_transform_publisher" name="goal_position_frame" 
+	args="0 0 0 0 0 0 /base_link /base_goal_position" />-->
+
+        <!-- <node pkg="robot_state_publisher" type="state_publisher" name="robot_base_static_state_publisher" output="screen">
+		<remap from="joint_states" to="youbot_base_state"/> 
+	</node> -->
+</launch>

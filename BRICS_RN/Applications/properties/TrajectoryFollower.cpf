@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+  <simple name="minDeltaVel" type="double"><description>Minimun velocity variation that will produce a new trajectory generation</description><value>0.001</value></simple>
+  <simple name="goalDistanceThreeshold" type="double"><description>The min distance between the current pose and the target pose for considering the transaltion as done</description><value>0.1</value></simple>
+  <simple name="goalOrientationThreeshold" type="double"><description>The min diffrence between the current theta and the target theta for considering the rotation as done</description><value>0.1</value></simple>
+  <simple name="minLinearVelocity" type="float"><description>The min linear velocity</description><value>0.1</value></simple>
+  <simple name="maxLinearVelocity" type="float"><description>The max linear velocity</description><value>0.3</value></simple>
+  <simple name="minAngularVelocity" type="float"><description>The min angular velocity</description><value>0.1</value></simple>
+  <simple name="maxAngularVelocity" type="float"><description>The max angular velocity</description><value>1</value></simple>
+  <simple name="minLinearAcceleration" type="float"><description>The min linear acceleration</description><value>0</value></simple>
+  <simple name="maxLinearAcceleration" type="float"><description>The max linear acceleration</description><value>0.5</value></simple>
+  <simple name="minAngularAcceleration" type="float"><description>The min angular acceleration</description><value>0</value></simple>
+  <simple name="maxAngularAcceleration" type="float"><description>The max angular acceleration</description><value>0.5</value></simple>
+</properties>

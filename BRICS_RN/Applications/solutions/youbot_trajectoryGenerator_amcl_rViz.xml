@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+
+
+<simple name="Import" type="string"><value>YoubotDriverBergamo</value></simple>
+<simple name="Import" type="string"><value>rtt_rosnode</value></simple>
+<simple name="Import" type="string"><value>rtt_motion_control_msgs</value></simple>
+<simple name="Import" type="string"><value>TrajectoryPlanner</value></simple>
+<simple name="Import" type="string"><value>TrajectoryAdapter</value></simple>
+<simple name="Import" type="string"><value>TrajectoryFollower</value></simple>
+<simple name="Import" type="string"><value>HokuyoDriver</value></simple>
+<simple name="Import" type="string"><value>AmclBergamo</value></simple>
+<simple name="Import" type="string"><value>WorldModel</value></simple>  
+
+<!-- odometry from youbot -->
+<struct name="ROS_Odometry" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/odom</value></simple> 
+</struct> 
+
+<!-- goal position from rviz -->
+<struct name="ROS_Goal_Pose" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/base/goal_position</value></simple> 
+</struct>
+
+<!-- joints States from youbot -->
+<struct name="ROS_Joints_States" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/base/joint_states</value></simple> 
+</struct> 
+
+<!-- Laser Scanse from Hokuyo -->
+<struct name="ROS_Laser_Scans" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/base/laser_scans</value></simple> 
+</struct>
+
+<!-- Path from Trajectory Planner -->
+<struct name="ROS_Path" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/planned_path</value></simple> 
+</struct>
+
+<!-- Initial pose from Rviz -->
+<struct name="ROS_Initial_Pose" type="ConnPolicy">
+  <simple name="transport" type="long"><value>3</value></simple>  <!-- 3 = ROS -->  
+  <simple name="name_id" type="string"><value>/base/initial_pose</value></simple> 
+</struct>
+
+  <struct name="YoubotDriver" type="YoubotDriver::YoubotDriver">
+  
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.002</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="baseTwistInPort" type="string"><value>twist</value></simple>
+      <simple name="baseOdometryOutPort" type="string"><value>odo</value></simple>
+      <simple name="baseOdometryOutPort" type="string"><value>ROS_Odometry</value></simple>
+      <simple name="baseJointsStatesOutPort" type="string"><value>ROS_Joints_States</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>0</value></simple>
+    
+  	<simple name="UpdateProperties" type="string">
+  		<value>properties/YoubotDriver.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryFollower" type="Navigation::TrajectoryFollower">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.02</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+      <simple name="twistOutPort" type="string"><value>twist</value></simple>
+      <simple name="targetTrajectoryInPort" type="string"><value>adapted_traj</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryFollower.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryAdapter" type="Navigation::TrajectoryAdapter">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.5</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="trajectoryOutPort" type="string"><value>adapted_traj</value></simple>
+      <simple name="trajectoryInPort" type="string"><value>planned_traj</value></simple>
+      <simple name="laserScanInPort" type="string"><value>laser</value></simple>
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryAdapter.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="TrajectoryPlanner" type="Navigation::TrajectoryPlanner">
+    <struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.5</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="trajectoryOutPort" type="string"><value>planned_traj</value></simple>
+      <simple name="pathOutPort" type="string"><value>ROS_Path</value></simple>
+      <simple name="goalInPort" type="string"><value>ROS_Goal_Pose</value></simple>
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+    <simple name="UpdateProperties" type="string">
+  		<value>properties/TrajectoryPlanner.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="HokuyoDriver" type="Hokuyo::HokuyoDriverComponent">
+    
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.1</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="laserScanOutPort" type="string"><value>ROS_Laser_Scans</value></simple>
+      <simple name="laserScanOutPort" type="string"><value>laser</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+   <simple name="UpdateProperties" type="string">
+  		<value>properties/HokuyoDriver.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="AmclBergamo" type="Navigation::AmclBergamo"> 
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.1</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="odometryInPort" type="string"><value>odo</value></simple>
+      <simple name="laserScanInPort" type="string"><value>laser</value></simple>
+      <simple name="occupancyGridPtrInPort" type="string"><value>gridMap</value></simple>
+      <simple name="initialPoseInPort" type="string"><value>ROS_Initial_Pose</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+   <simple name="UpdateProperties" type="string">
+  		<value>properties/AmclBergamo.cpf</value> 
+  	</simple>
+  </struct>
+  
+  <struct name="WorldModel" type="Navigation::WorldModel"> 
+  	<struct name="Activity" type="Activity">
+      <simple name="Priority" type="long"><value>0</value></simple>
+      <simple name="Period" type="double"><value>0.1</value></simple>
+      <simple name="Scheduler" type="string"><value>ORO_SCHED_OTHER</value></simple>
+    </struct>
+    <struct name="Ports" type="PropertyBag">
+      <simple name="occupancyGridOutPort" type="string"><value>gridMap</value></simple>
+    </struct>
+    <simple name="AutoConf" type="boolean"><value>1</value></simple>
+    <simple name="AutoStart" type="boolean"><value>1</value></simple>
+   <simple name="UpdateProperties" type="string">
+  		<value>properties/WorldModel.cpf</value> 
+  	</simple>
+  </struct>
+  
+</properties>
