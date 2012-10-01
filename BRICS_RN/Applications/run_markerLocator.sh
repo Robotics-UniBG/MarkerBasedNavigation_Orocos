@@ -1,1 +1,1 @@
-rosrun ocl deployer-gnulinux -s solutions/markerLocator.xml
+rosrun ocl deployer-gnulinux -s solutions/markerLocator.xml -linfo
